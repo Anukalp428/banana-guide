@@ -1,0 +1,307 @@
+/* ═══════════════════════════════════════════════════════
+   VoiceAssistant.css
+   Clean, Fast Farmer Voice Navigation Assistant
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Floating Action Button (FAB) ────────────────────────────── */
+.voice-assistant-fab-container {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+}
+
+.voice-assistant-fab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1B4D2E 0%, #2D6A4F 100%);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  padding: 13px 22px;
+  border-radius: 50px;
+  font-size: .92rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(27, 77, 46, 0.35);
+  cursor: pointer;
+  transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', sans-serif;
+  user-select: none;
+}
+
+.voice-assistant-fab:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(27, 77, 46, 0.45);
+  border-color: #fff;
+}
+
+.voice-assistant-fab--listening {
+  background: linear-gradient(135deg, #C62828 0%, #B71C1C 100%) !important;
+  box-shadow: 0 0 0 5px rgba(198, 40, 40, 0.3), 0 8px 26px rgba(198, 40, 40, 0.4) !important;
+}
+
+.fab-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.fab-label {
+  white-space: nowrap;
+  letter-spacing: .02em;
+}
+
+.fab-pulse-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  animation: fabPulse 1.4s ease-out infinite;
+}
+
+@keyframes fabPulse {
+  0%   { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ── Voice Feedback Card / Toast ─────────────────────────────── */
+.voice-card-popup {
+  position: fixed;
+  bottom: 96px;
+  right: 28px;
+  width: 360px;
+  max-width: calc(100vw - 36px);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #C8E6C9;
+  z-index: 1000;
+  overflow: hidden;
+  animation: voiceCardSlideUp .22s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes voiceCardSlideUp {
+  from {
+    transform: translateY(18px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.voice-card--listening {
+  border-color: #EF5350;
+  box-shadow: 0 16px 40px rgba(211, 47, 47, 0.2);
+}
+
+.voice-card--success {
+  border-color: #66BB6A;
+  box-shadow: 0 16px 40px rgba(46, 125, 50, 0.2);
+}
+
+.voice-card--error {
+  border-color: #FFA726;
+  box-shadow: 0 16px 40px rgba(230, 81, 0, 0.18);
+}
+
+/* Card Header */
+.voice-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #F4FBF6;
+  border-bottom: 1px solid #E8F5E9;
+}
+
+.voice-card--listening .voice-card-header {
+  background: #FFEBEE;
+  border-bottom-color: #FFCDD2;
+}
+
+.voice-card--error .voice-card-header {
+  background: #FFF3E0;
+  border-bottom-color: #FFE0B2;
+}
+
+.voice-card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.voice-card-icon {
+  font-size: 1.15rem;
+}
+
+.voice-card-title {
+  font-size: .88rem;
+  font-weight: 700;
+  color: #1B4D2E;
+}
+
+.voice-card--listening .voice-card-title {
+  color: #C62828;
+}
+
+.voice-card--error .voice-card-title {
+  color: #E65100;
+}
+
+.voice-card-close {
+  background: transparent;
+  border: none;
+  font-size: .95rem;
+  font-weight: 700;
+  color: #757575;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all .15s ease;
+}
+
+.voice-card-close:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #212121;
+}
+
+/* Card Body */
+.voice-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Sound Wave Animation */
+.voice-soundwave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 24px;
+  padding: 2px 0;
+}
+
+.voice-soundwave span {
+  width: 4px;
+  height: 100%;
+  background: #D32F2F;
+  border-radius: 3px;
+  animation: soundBarBounce 1s ease-in-out infinite alternate;
+}
+
+.voice-soundwave span:nth-child(1) { animation-delay: .1s; height: 10px; }
+.voice-soundwave span:nth-child(2) { animation-delay: .25s; height: 22px; }
+.voice-soundwave span:nth-child(3) { animation-delay: .4s; height: 16px; }
+.voice-soundwave span:nth-child(4) { animation-delay: .15s; height: 24px; }
+.voice-soundwave span:nth-child(5) { animation-delay: .3s; height: 12px; }
+
+@keyframes soundBarBounce {
+  0%   { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+/* Transcript text */
+.voice-transcript-text {
+  margin: 0;
+  font-size: .92rem;
+  font-weight: 700;
+  color: #1B4D2E;
+  background: #F1F8F4;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 3px solid #2D6A4F;
+  word-break: break-word;
+}
+
+/* Status message */
+.voice-status-text {
+  margin: 0;
+  font-size: .82rem;
+  line-height: 1.45;
+  color: #424242;
+}
+
+.voice-status-text--listening {
+  color: #C62828;
+  font-weight: 600;
+}
+
+.voice-status-text--success {
+  color: #2E7D32;
+  font-weight: 700;
+}
+
+.voice-status-text--error {
+  color: #C62828;
+  font-weight: 600;
+  background: #FFEBEE;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #FFCDD2;
+}
+
+/* Quick helper command chips */
+.voice-helper-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid #F0F0F0;
+}
+
+.helper-label {
+  font-size: .72rem;
+  font-weight: 700;
+  color: #757575;
+  margin-right: 2px;
+}
+
+.voice-helper-chip {
+  background: #F1F8F4;
+  border: 1px solid #C8E6C9;
+  color: #1B4D2E;
+  font-size: .74rem;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.voice-helper-chip:hover {
+  background: #2D6A4F;
+  border-color: #2D6A4F;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ── Mobile responsiveness ───────────────────────────────────── */
+@media (max-width: 600px) {
+  .voice-assistant-fab-container {
+    bottom: 20px;
+    right: 20px;
+  }
+  .voice-assistant-fab {
+    padding: 10px 18px;
+    font-size: .84rem;
+  }
+  .voice-card-popup {
+    bottom: 84px;
+    right: 18px;
+    left: 18px;
+    width: auto;
+  }
+}

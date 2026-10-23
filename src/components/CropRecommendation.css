@@ -1,0 +1,737 @@
+/* ═══════════════════════════════════════════════════════
+   CropRecommendation.css
+   Yeh file sirf Crop Recommendation section ki styling hai
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ─────────────────────────────────────────────────────── */
+.crop-section {
+  padding: 100px 0;
+  background: var(--bg-white);
+  scroll-margin-top: 80px; /* navbar height ke barabar — smooth scroll fix */
+}
+
+/* ── Section header ─────────────────────────────────────────────────────── */
+.crop-section__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.crop-section__header .section-subtitle {
+  margin: 0 auto 20px;
+}
+
+/* ⚠️ Disclaimer banner */
+.crop-section__disclaimer {
+  display: inline-block;
+  background: #FFF8E1;
+  border: 1px solid #FFD54F;
+  color: #5D4037;
+  font-size: .82rem;
+  padding: 10px 24px;
+  border-radius: 10px;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* ── Two-column layout ──────────────────────────────────────────────────── */
+.crop-section__body {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ════════════════════════════════════════════════════════════
+   FORM CARD (Left side)
+   ════════════════════════════════════════════════════════════ */
+.crop-form-card {
+  background: var(--bg-page);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  border: 1.5px solid var(--accent-light);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 96px; /* Sticky — scroll karo toh form wahi rehta hai */
+}
+.crop-form-card__icon {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+.crop-form-card__title {
+  font-size: 1.25rem;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 4px;
+  color: var(--primary-dark);
+}
+.crop-form-card__subtitle {
+  font-size: .8rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+/* ── Form layout ─────────────────────────────────────────────────────────── */
+.crop-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Form Group — ek field ka wrapper ───────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group label {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.required-star {
+  color: #e53935;
+  font-size: 1rem;
+}
+
+/* ── Select dropdown ─────────────────────────────────────────────────────── */
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%232D6A4F' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-color: #fff;
+  border: 1.5px solid var(--accent-light);
+  border-radius: var(--radius-sm);
+  padding: 13px 40px 13px 16px;
+  font-size: .92rem;
+  color: var(--text-body);
+  transition: var(--ease-fast);
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  width: 100%;
+}
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(64,145,108,.15);
+}
+
+/* ── Input field styling ─────────────────────────────────────────────────── */
+.form-group input {
+  background-color: #fff;
+  border: 1.5px solid var(--accent-light);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  font-size: .92rem;
+  color: var(--text-body);
+  transition: var(--ease-fast);
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(64,145,108,.15);
+}
+.form-group label small {
+  font-size: .7rem;
+  color: var(--text-muted);
+  text-transform: none;
+  font-weight: 400;
+}
+
+/* Error state — select & input ka border laal ho jaata hai */
+.form-group--error select,
+.form-group--error input,
+.form-group--error .irrigation-toggle {
+  border-color: #e53935 !important;
+}
+.form-group--error label { color: #e53935; }
+
+/* ── Soil Nutrients Section (Soil Health Card) ─────────────────────────── */
+.crop-nutrients-section {
+  background: var(--bg-white);
+  border: 1.5px solid var(--accent-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.crop-nutrients-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.crop-nutrients-title {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.soil-autofill-btn {
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+  color: #1B5E20;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--ease-fast);
+}
+.soil-autofill-btn:hover {
+  background: #C8E6C9;
+}
+.nutrients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.field-error-mini {
+  font-size: .72rem;
+  color: #e53935;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ── Field error message ────────────────────────────────────────────────── */
+.field-error {
+  font-size: .78rem;
+  color: #e53935;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: errorShake .3s ease;
+  background: #fde8e8;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border-left: 3px solid #e53935;
+}
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-4px); }
+  75%       { transform: translateX(4px); }
+}
+
+/* ── Irrigation Toggle Buttons ──────────────────────────────────────────── */
+/* Yeh do buttons hain — YES ya NO select karne ke liye */
+.irrigation-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+.irrigation-btn {
+  padding: 13px 12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--accent-light);
+  background: #fff;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--ease-fast);
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+.irrigation-btn:hover {
+  border-color: var(--primary-light);
+  color: var(--primary);
+  background: var(--bg-section);
+}
+/* Active state — YES button */
+.irrigation-btn--active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+  box-shadow: 0 3px 12px rgba(45,106,79,.35);
+}
+/* Active state — NO button (orange color) */
+.irrigation-btn--no.irrigation-btn--active {
+  background: #E65100 !important;
+  border-color: #E65100 !important;
+  box-shadow: 0 3px 12px rgba(230,81,0,.35);
+}
+
+/* ── Form action buttons ─────────────────────────────────────────────────── */
+.crop-form__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.crop-form__submit {
+  flex: 1;
+  justify-content: center;
+  min-height: 50px;
+  font-size: .95rem !important;
+}
+.crop-form__submit:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+.crop-form__reset {
+  flex-shrink: 0;
+  font-size: .88rem !important;
+  padding: 10px 18px !important;
+}
+
+/* ── Spinner animation ───────────────────────────────────────────────────── */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2.5px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ════════════════════════════════════════════════════════════
+   RESULTS AREA (Right side)
+   ════════════════════════════════════════════════════════════ */
+.crop-results {
+  min-height: 360px;
+  scroll-margin-top: 100px;
+}
+
+/* ── Placeholder (start mein) ────────────────────────────────────────────── */
+.crop-results__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  gap: 16px;
+  text-align: center;
+  color: var(--text-muted);
+  border: 2px dashed var(--accent-light);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  background: var(--bg-page);
+}
+.crop-results__placeholder-icon { font-size: 4rem; }
+.crop-results__placeholder h4 {
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  font-family: 'Playfair Display', serif;
+}
+.crop-results__placeholder p {
+  font-size: .9rem;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+/* 4 steps row */
+.crop-results__steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+  margin-top: 8px;
+}
+.crop-results__step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid var(--accent-light);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: .82rem;
+  color: var(--text-body);
+  font-weight: 500;
+}
+.crop-results__step-num {
+  width: 22px;
+  height: 22px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  font-size: .72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Loading state ────────────────────────────────────────────────────────── */
+.crop-results__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  gap: 20px;
+}
+.crop-results__loading-spinner {
+  width: 56px;
+  height: 56px;
+  border: 5px solid var(--accent-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin .9s linear infinite;
+}
+.crop-results__loading-text {
+  font-size: .95rem;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+/* ── Results grid ─────────────────────────────────────────────────────────── */
+.crop-results__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Summary banner */
+.crop-results__summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: linear-gradient(135deg, #F0FDF4, #E8F5E9);
+  border: 1.5px solid #A5D6A7;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+}
+.crop-results__summary-icon { font-size: 1.6rem; flex-shrink: 0; }
+.crop-results__summary-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+  font-family: 'Playfair Display', serif;
+}
+.crop-results__summary-sub {
+  font-size: .82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Demo simulation banner tag */
+.demo-rule-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFF3E0;
+  border: 1px solid #FFE0B2;
+  color: #B26A00;
+  font-size: .75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-top: 8px;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.crop-results__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  gap: 14px;
+  text-align: center;
+  border: 2px dashed #FFB74D;
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  background: #FFFDF9;
+  animation: resultSlideIn .3s ease both;
+}
+.crop-results__empty-icon { font-size: 3.5rem; }
+.crop-results__empty h4 {
+  font-size: 1.15rem;
+  color: #B78103;
+  font-family: 'Playfair Display', serif;
+}
+.crop-results__empty p {
+  font-size: .88rem;
+  max-width: 380px;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+.crop-results__empty-hint {
+  font-size: .8rem !important;
+  color: var(--text-muted) !important;
+}
+
+/* ── Error state ─────────────────────────────────────────────────────────── */
+.crop-results__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  gap: 14px;
+  text-align: center;
+  border: 1.5px solid #EF9A9A;
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  background: #FFEBEE;
+  animation: resultSlideIn .3s ease both;
+}
+.crop-results__error-icon { font-size: 3.5rem; }
+.crop-results__error h4 {
+  font-size: 1.15rem;
+  color: #C62828;
+  font-family: 'Playfair Display', serif;
+}
+.crop-results__error p {
+  font-size: .88rem;
+  max-width: 360px;
+  line-height: 1.6;
+  color: #B71C1C;
+}
+
+/* ════════════════════════════════════════════════════════════
+   CROP RESULT CARD
+   ════════════════════════════════════════════════════════════ */
+.crop-result-card__title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.crop-result-card__state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+  color: #1B5E20;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.crop-result-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--accent-light);
+  box-shadow: var(--shadow-xs);
+  transition: var(--ease);
+  animation: resultSlideIn .4s ease both;
+  position: relative;
+  overflow: hidden;
+  padding: 20px 20px 20px 26px; /* extra left padding for accent bar */
+}
+.crop-result-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--secondary);
+}
+
+/* Warning card — different style */
+.crop-result-card--warning {
+  background: #FFF8E1;
+  border-color: #FFD54F;
+}
+.crop-result-card--warning:hover {
+  transform: none;
+  border-color: #FFC107;
+}
+
+/* Left accent bar */
+.crop-result-card__accent {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  border-radius: 5px 0 0 5px;
+}
+.crop-result-card--warning .crop-result-card__accent {
+  background: linear-gradient(to bottom, #F57F17, #FDD835);
+}
+
+/* Top row: emoji + heading + rank */
+.crop-result-card__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.crop-result-card__emoji {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-section);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+.crop-result-card__header { flex: 1; min-width: 0; }
+.crop-result-card__name {
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+}
+
+/* 💡 Reason text — sabse important naya feature! */
+.crop-result-card__reason {
+  font-size: .82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.reason-label {
+  font-weight: 700;
+  color: var(--primary-light);
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* Rank badge */
+.crop-result-card__rank {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent-light);
+  font-family: 'Playfair Display', serif;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Meta pills row ──────────────────────────────────────────────────────── */
+.crop-result-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.meta-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-section);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: .78rem;
+}
+.meta-pill__icon  { font-size: .9rem; }
+.meta-pill__label { color: var(--text-muted); font-weight: 500; }
+.meta-pill__val   { color: var(--text-heading); font-weight: 700; }
+.meta-pill--profit {
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+}
+.meta-pill--profit .meta-pill__val { color: var(--primary); }
+
+/* ── Tips toggle section ────────────────────────────────────────────────── */
+.crop-result-card__tips-section { border-top: 1px solid var(--accent-light); padding-top: 12px; }
+.tips-toggle {
+  background: none;
+  border: none;
+  color: var(--primary-light);
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+  transition: var(--ease-fast);
+}
+.tips-toggle:hover { color: var(--primary-dark); }
+
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  animation: fadeSlideUp .25s ease;
+}
+.tips-list li {
+  font-size: .82rem;
+  color: var(--text-body);
+  display: flex;
+  gap: 8px;
+  line-height: 1.5;
+}
+.tips-list__arrow {
+  color: var(--secondary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.crop-result-card__npk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #E0F2F1;
+  border: 1px solid #80CBC4;
+  color: #004D40;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.crop-result-card__nutrient-advisory {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: .8rem;
+  color: #2E7D32;
+  background: #F1F8E9;
+  border: 1px solid #DCEDC8;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 8px;
+  line-height: 1.45;
+}
+
+.nutrient-icon {
+  font-size: .95rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────── */
+@keyframes resultSlideIn {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile & Tablet
+   ════════════════════════════════════════════════════════════ */
+
+/* Tablet — single column layout */
+@media (max-width: 1000px) {
+  .crop-section__body { grid-template-columns: 1fr; }
+  .crop-form-card { position: static; }
+  .crop-results { min-height: auto; }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .crop-section { padding: 64px 0; }
+  .crop-form-card { padding: 24px 20px; }
+  .irrigation-toggle { grid-template-columns: 1fr; }
+  .crop-result-card__meta { gap: 6px; }
+  .meta-pill { font-size: .74rem; padding: 4px 10px; }
+  .crop-results__steps { grid-template-columns: 1fr; }
+  .crop-form__actions { flex-direction: column; }
+  .crop-form__submit, .crop-form__reset { width: 100%; justify-content: center; }
+}
